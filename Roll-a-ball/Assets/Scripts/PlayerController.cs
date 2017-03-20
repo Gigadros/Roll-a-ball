@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
 
     Rigidbody rb;
     int count;
+	//float moveHorizontal, moveVerticle;
+	Vector3 movement;
     public float speed;
     public Text countText, winText;
 
@@ -14,6 +16,9 @@ public class PlayerController : MonoBehaviour {
     {
         rb = this.GetComponent<Rigidbody>();
         count = 0;
+		//moveHorizontal = 0f;
+        //moveVerticle = 0f;
+		movement = new Vector3(0f,0f,0f);
     }
 
     void Start()
@@ -22,9 +27,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate () {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVerticle = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0f, moveVerticle);
+        //moveHorizontal = Input.GetAxis("Horizontal");
+        //moveVerticle = Input.GetAxis("Vertical");
+        //movement.x = moveHorizontal;
+		//movement.z = moveVerticle;
+		movement.x = Input.GetAxis("Horizontal");
+		movement.z = Input.GetAxis("Vertical");
         rb.AddForce(movement * speed);
 	}
 
